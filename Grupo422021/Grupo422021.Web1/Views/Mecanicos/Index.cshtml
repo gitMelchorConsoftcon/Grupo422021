@@ -1,0 +1,19 @@
+﻿@model List<string>;
+
+<h1>Vista de mecanicos</h1>
+
+<table class="table">
+    <tr>
+        <th>Mecanico</th>
+    </tr>
+    @foreach (string item in Model)
+    {
+        <tr>
+            <td> @item</td>
+        </tr>
+       
+    }
+</table>
+
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary" > Regresar</a>

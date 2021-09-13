@@ -1,0 +1,39 @@
+﻿@model Mecanico
+
+
+<h1>Modificar mecanico</h1>
+
+
+<form asp-controller="Mecanicos" asp-action="Edit" method="post">
+
+    <div class="form-group">
+        <label asp-for="IdMecanico" class="label-control"></label>
+        <input type="text" asp-for="IdMecanico" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nombre" class="label-control"></label>
+        <input type="text" asp-for="Nombre" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ApellidoPaterno" class="label-control"></label>
+        <input type="text" asp-for="ApellidoPaterno" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ApellidoMaterno" class="label-control"></label>
+        <input type="text" asp-for="ApellidoMaterno" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Telefono" class="label-control"></label>
+        <input type="text" asp-for="Telefono" class="form-control" />
+    </div>
+
+
+    <div class="form-group">
+        <a asp-controller="Mecanicos" asp-action="Index" class="btn btn-secondary">Regresar</a>
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+
+
+
+</form>

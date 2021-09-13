@@ -1,17 +1,39 @@
-﻿@model List<string>;
+﻿@model List<Mecanico>;
 
-<h1>Vista de mecanicos</h1>
+    <div class="row">
+        <div class="col-12  col-lg-6">
+            <h1>Vista de mecanicos</h1>
+        </div>
+        <div class="col-12  col-lg-6">
+            <a asp-controller="Mecanicos" asp-action="Create" class="btn btn-success"> Nuevo</a>
+        </div> 
+    </div>
+
 
 <table class="table">
     <tr>
         <th>Mecanico</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Telefono</th>
+        <th></th>
     </tr>
-    @foreach (string item in Model)
+    @foreach (var item in Model)
     {
         <tr>
-            <td> @item</td>
+            <td> @item.IdMecanico</td>
+            <td> @item.Nombre</td>
+            <td> @item.ApellidoPaterno</td>
+            <td> @item.ApellidoMaterno</td>
+            <td> @item.Telefono</td>
+            <td>
+                <a asp-controller="Mecanicos" asp-action="edit" asp-route-id="@item.IdMecanico" class="btn btn-warning" >
+                    Modificar
+                </a>
+            </td>
         </tr>
-       
+
     }
 </table>
 

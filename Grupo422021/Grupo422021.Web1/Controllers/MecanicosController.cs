@@ -88,6 +88,16 @@ namespace Grupo422021.Web1.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult Delete (int id )
+        {
+
+            var mecanico = mecanicos.Where(x => x.IdMecanico == id).FirstOrDefault();
+
+            mecanicos.Remove(mecanico);
+          return RedirectToAction("Index");
+           
+        }
 
     }
 }

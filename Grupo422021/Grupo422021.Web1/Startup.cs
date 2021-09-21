@@ -1,6 +1,8 @@
+using Grupo422021.Web1.Data;
 using Grupo422021.Web1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,7 +28,9 @@ namespace Grupo422021.Web1
         public void ConfigureServices(IServiceCollection services)
         {
 
-        
+
+            services.AddDbContext<DataContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Default")));
+
             services.AddControllersWithViews();
         }
 

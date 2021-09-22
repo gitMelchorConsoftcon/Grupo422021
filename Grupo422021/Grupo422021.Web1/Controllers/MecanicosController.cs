@@ -1,41 +1,26 @@
-﻿using Grupo422021.Web1.Models;
+﻿using Grupo422021.Web1.Data;
+using Grupo422021.Web1.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Grupo422021.Web1.Controllers
 {
     public class MecanicosController : Controller
     {
-        List<Mecanico> mecanicos = new List<Mecanico>();
+        private readonly DataContext _contexto;
 
-        public MecanicosController()
+        public MecanicosController(DataContext contexto)
         {
-            mecanicos.Add(new Mecanico
-            {
-                IdMecanico = 1,
-                Nombre = "Pedro",
-                ApellidoPaterno = "Perez",
-                ApellidoMaterno = "Perez",
-                Telefono = "6677909090"
-            });
-
-            mecanicos.Add(new Mecanico
-            {
-                IdMecanico = 2,
-                Nombre = "Juan Pablo",
-                ApellidoPaterno = "Lopez",
-                ApellidoMaterno = "Lopez",
-                Telefono = "6677909091"
-            });
+            _contexto = contexto;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
+            var listaMecanicos = _contexto.Mecanicos;
 
-
-            return View(mecanicos);
+            return View(listaMecanicos.ToList());
         }
 
         [HttpGet]
@@ -50,7 +35,10 @@ namespace Grupo422021.Web1.Controllers
         {
             if (ModelState.IsValid)
             {
-                mecanicos.Add(mecanico);
+
+                _contexto.Mecanicos.Add(mecanico);
+                _contexto.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -61,7 +49,7 @@ namespace Grupo422021.Web1.Controllers
         [HttpGet]
         public IActionResult Edit (int id)
         {
-            var mecanico = mecanicos.Where(x => x.IdMecanico == id).FirstOrDefault();
+            var mecanico = _contexto.Mecanicos.Find(id);
 
             if (mecanico == null)
                 return RedirectToAction("Index");
@@ -74,12 +62,15 @@ namespace Grupo422021.Web1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var mencanico = mecanicos.Where(x=> x.IdMecanico==id).FirstOrDefault();
+               var mencanico = _contexto.Mecanicos.Find(id);
 
                 mencanico.Nombre = mecanico.Nombre;
                 mecanico.ApellidoPaterno = mecanico.ApellidoPaterno;
                 mecanico.ApellidoMaterno = mecanico.ApellidoMaterno;
                 mencanico.Telefono = mencanico.Telefono;
+
+                _contexto.Entry(mecanico).State = EntityState.Modified;
+                _contexto.SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -92,9 +83,10 @@ namespace Grupo422021.Web1.Controllers
         public IActionResult Delete (int id )
         {
 
-            var mecanico = mecanicos.Where(x => x.IdMecanico == id).FirstOrDefault();
+            var mecanico = _contexto.Mecanicos.Find(id);
 
-            mecanicos.Remove(mecanico);
+            _contexto.Mecanicos.Remove(mecanico);
+            _contexto.SaveChanges();
           return RedirectToAction("Index");
            
         }

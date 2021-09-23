@@ -11,5 +11,6 @@ namespace Grupo422021.Web1.Data
         }
 
         public DbSet<Mecanico> Mecanicos { get; set; }
+        public DbSet<Servicio> Servicios { get; set; }
     }
 }

@@ -1,0 +1,39 @@
+﻿@model Servicio
+
+
+<h1>Vista de nuevo servicio</h1>
+
+
+<form asp-controller="Servicios" asp-action="Create" method="post">
+
+    <div class="form-group">
+        <label asp-for="IdServicio" class="label-control"></label>
+        <input type="text" asp-for="IdServicio" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nombre" class="label-control"></label>
+        <input type="text" asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Descripcion" class="label-control"></label>
+        <input type="text" asp-for="Descripcion" class="form-control" />
+        <span asp-validation-for="Descripcion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Activo" class="label-control"></label>
+        <input type="text" asp-for="Activo" class="form-control" />
+        <span asp-validation-for="Activo" class="text-danger"></span>
+    </div>
+   
+
+
+    <div class="form-group">
+        <a asp-controller="Servicios" asp-action="Index" class="btn btn-secondary"  >Regresar</a>
+        <input type="submit"  value="Guardar"  class="btn btn-primary" />
+    </div>
+
+
+
+</form>

@@ -1,0 +1,18 @@
+﻿@model System.Boolean?
+
+@if (Model.HasValue)
+{
+
+    @if (Model.Value == true)
+    {
+        <p class="text-success">Activo</p>
+    }
+    else
+    {
+        <p class="text-danger"> Cancelado</p>
+    }
+}
+else
+{
+    <p class="text-danger"> Cancelado</p>
+}

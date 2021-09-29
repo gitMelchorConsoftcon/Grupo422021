@@ -1,6 +1,7 @@
 ﻿using Grupo422021.Web1.Data;
 using Grupo422021.Web1.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,5 +48,49 @@ namespace Grupo422021.Web1.Controllers
 
             return View(servicio);
         }
+    
+    
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var servicio = _contexto.Servicios.Find(id);
+            return View(servicio);
+        }
+
+
+        [HttpPost]
+        public IActionResult Edit(int id,Servicio servicio)
+        {
+            if (ModelState.IsValid)
+            {
+                var modificar = _contexto.Servicios.Find(id);
+
+                modificar.Nombre = servicio.Nombre;
+                modificar.Descripcion = servicio.Descripcion;
+                modificar.Activo = servicio.Activo;
+
+                _contexto.Entry(modificar).State = EntityState.Modified;
+                _contexto.SaveChanges();
+
+                return RedirectToAction("Index");
+
+            }
+
+            return View(servicio);
+        }
+    
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var borrar = _contexto.Servicios.Find(id);
+
+            _contexto.Servicios.Remove(borrar);
+            _contexto.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

@@ -12,15 +12,21 @@
 
 <table class="table">
     <tr>
-        <th>Codigo</th>
-        <th>Servicio</th>
+        <th>
+            @Html.DisplayNameFor(item=> item.FirstOrDefault().IdServicio)
+
+        </th>
+        <th>
+         @Html.DisplayNameFor(item => item.FirstOrDefault().Nombre) </th>
+        <th>@Html.DisplayNameFor(items => Model.FirstOrDefault().Activo)</th>
         <th></th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td> @item.IdServicio</td>
-            <td> @item.Nombre</td>
+            <td>@Html.DisplayFor( items=> @item.IdServicio)</td>
+            <td> @Html.DisplayFor(items=> @item.Nombre)</td>
+            <td>@Html.DisplayFor(items=>  @item.Activo)</td>
             <td>
                 <a asp-controller="Servicios" asp-action="edit" asp-route-id="@item.IdServicio" class="btn btn-warning" >
                     Modificar

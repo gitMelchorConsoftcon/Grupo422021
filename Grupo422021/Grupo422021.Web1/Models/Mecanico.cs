@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Grupo422021.Web1.Models
@@ -27,6 +28,8 @@ namespace Grupo422021.Web1.Models
         [MaxLength(10)]
         public string Telefono { get; set; }
 
+        [NotMapped]
+        public virtual List<OrdenServicio> OrdenServicio { get; set; }
     }
 }
 

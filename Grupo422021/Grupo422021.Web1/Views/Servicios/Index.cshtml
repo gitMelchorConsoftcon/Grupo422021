@@ -4,8 +4,9 @@
         <div class="col-12  col-lg-6">
             <h1>Vista de Servicios</h1>
         </div>
-        <div class="col-12  col-lg-6">
-            <a asp-controller="Servicios" asp-action="Create" class="btn btn-success"> Nuevo</a>
+        <div class="col-12  col-lg-6 text-right">
+            
+            <a asp-controller="Servicios" asp-action="Create" class="btn btn-success"><i class="fa fa-plus"></i>  <span class="d-none d-md-inline">Nuevo</span> </a>
         </div> 
     </div>
 
@@ -18,27 +19,26 @@
         </th>
         <th>
          @Html.DisplayNameFor(item => item.FirstOrDefault().Nombre) </th>
-        <th>@Html.DisplayNameFor(items => Model.FirstOrDefault().Activo)</th>
-        <th></th>
+        <th  class="text-right">@Html.DisplayNameFor(items => Model.FirstOrDefault().Activo)</th>
+        <th>Acciones</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@Html.DisplayFor( items=> @item.IdServicio)</td>
-            <td> @Html.DisplayFor(items=> @item.Nombre)</td>
-            <td>@Html.DisplayFor(items=>  @item.Activo)</td>
-            <td>
-                <a asp-controller="Servicios" asp-action="edit" asp-route-id="@item.IdServicio" class="btn btn-warning" >
-                    Modificar
+            <td > @Html.DisplayFor(items=> @item.Nombre)</td>
+            <td class="text-center">@Html.DisplayFor(items=>  @item.Activo)</td>
+            <td class="text-right">
+                <a asp-controller="Servicios" asp-action="edit" asp-route-id="@item.IdServicio" class="btn btn-warning">
+                    <i class="fa fa-edit"></i> <span class="d-none d-md-inline">Modificar</span>   
                 </a>
                 <a asp-controller="Servicios" asp-action="delete" asp-route-id="@item.IdServicio" class="btn btn-danger">
-                    Borrar
+                    <i class="fa fa-trash"></i> <span class="d-none d-md-inline">Borrar</span> 
                 </a>
             </td>
         </tr>
-
     }
 </table>
 
 
-<a asp-controller="Home" asp-action="Index" class="btn btn-primary" > Regresar</a>
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary"> <i class="fa fa-reply"></i> <span class="d-none d-md-inline">Regresar</span> </a>

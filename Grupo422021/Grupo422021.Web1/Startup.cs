@@ -1,15 +1,13 @@
 using Grupo422021.Web1.Data;
+using Grupo422021.Web1.Interfaces;
 using Grupo422021.Web1.Models;
+using Grupo422021.Web1.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Grupo422021.Web1
 {
@@ -30,6 +28,9 @@ namespace Grupo422021.Web1
 
 
             services.AddDbContext<DataContext>(option => option.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddTransient<IRepositorioGenerico<Mecanico> , RepositorioGenerico<Mecanico>>();
+            services.AddTransient<IRepositorioGenerico<Marca>, RepositorioGenerico<Marca>>();
 
             services.AddControllersWithViews();
         }

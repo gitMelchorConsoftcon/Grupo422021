@@ -1,0 +1,27 @@
+﻿@model Marca
+
+
+<h1>Modificar Marca</h1>
+
+
+<form asp-controller="Marcas" asp-action="Edit" method="post">
+
+    <div class="form-group">
+        <label asp-for="IdMarca" class="label-control"></label>
+        <input type="text" asp-for="IdMarca" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nombre" class="label-control"></label>
+        <input type="text" asp-for="Nombre" class="form-control" />
+    </div>
+   
+
+    <div class="form-group">
+        <a asp-controller="Marcas" asp-action="Index" class="btn btn-secondary">Regresar</a>
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+
+
+
+</form>

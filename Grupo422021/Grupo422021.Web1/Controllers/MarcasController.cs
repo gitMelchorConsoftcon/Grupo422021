@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Grupo422021.Web1.Controllers
 {
-    public class MecanicosController : Controller
+    public class MarcasController : Controller
     {
-        private readonly IRepositorioGenerico<Mecanico> _contexto;
+        private readonly IRepositorioGenerico<Marca> _contexto;
 
-        public MecanicosController(IRepositorioGenerico<Mecanico> contexto)
+        public MarcasController(IRepositorioGenerico<Marca> contexto)
         {
             _contexto = contexto;
         }
@@ -22,12 +22,12 @@ namespace Grupo422021.Web1.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var mecanico = new Mecanico();
-            return View(mecanico);
+            var Marca = new Marca();
+            return View(Marca);
         }
 
         [HttpPost]
-        public IActionResult Create(Mecanico obj)
+        public IActionResult Create(Marca obj)
         {
             if (ModelState.IsValid)
             {
@@ -38,18 +38,18 @@ namespace Grupo422021.Web1.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit (int id)
+        public IActionResult Edit(int id)
         {
-            var mecanico = _contexto.Buscar(id);
+            var Marca = _contexto.Buscar(id);
 
-            if (mecanico == null)
+            if (Marca == null)
                 return RedirectToAction("Index");
 
-            return View(mecanico);
+            return View(Marca);
         }
 
-       [HttpPost]
-       public IActionResult Edit(int id, Mecanico obj)
+        [HttpPost]
+        public IActionResult Edit(int id, Marca obj)
         {
             if (ModelState.IsValid)
             {
@@ -61,12 +61,11 @@ namespace Grupo422021.Web1.Controllers
 
 
         [HttpGet]
-        public IActionResult Delete (int id )
+        public IActionResult Delete(int id)
         {
             _contexto.Borrar(id);
-          return RedirectToAction("Index");
-           
-        }
+            return RedirectToAction("Index");
 
+        }
     }
 }

@@ -1,0 +1,41 @@
+﻿@model List<Vehiculo>;
+
+<div class="row">
+    <div class="col-12  col-lg-6">
+        <h1>Vista de Marcas</h1>
+    </div>
+    <div class="col-12  col-lg-6">
+        <a asp-controller="Vehiculos" asp-action="Create" class="btn btn-success"> Nuevo</a>
+    </div>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>Palcas</th>
+        <th>Marca</th>
+        <th>Cliente</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Placa</td>
+            <td> @item.IdMarca</td>
+            <td> @item.IdCliente</td>
+
+            <td>
+                <a asp-controller="Vehiculos" asp-action="edit" asp-route-id="@item.IdMarca" class="btn btn-warning">
+                    Modificar
+                </a>
+                <a asp-controller="Vehiculos" asp-action="delete" asp-route-id="@item.IdMarca" class="btn btn-danger">
+                    Borrar
+                </a>
+            </td>
+        </tr>
+
+    }
+</table>
+
+
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary"> Regresar</a>

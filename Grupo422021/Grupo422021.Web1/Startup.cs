@@ -31,7 +31,9 @@ namespace Grupo422021.Web1
 
             services.AddTransient<IRepositorioGenerico<Mecanico> , RepositorioGenerico<Mecanico>>();
             services.AddTransient<IRepositorioGenerico<Marca>, RepositorioGenerico<Marca>>();
-
+            services.AddTransient<IRepositorioGenerico<Vehiculo>, RepositorioGenerico<Vehiculo>>();
+            services.AddTransient<IRepositorioGenerico<Cliente>, RepositorioGenerico<Cliente>>();
+            
             services.AddControllersWithViews();
         }
 

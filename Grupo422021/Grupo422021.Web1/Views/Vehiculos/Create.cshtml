@@ -1,0 +1,49 @@
+﻿@model Vehiculo
+
+
+<h1>Vista de nuevo Vehiculo</h1>
+
+
+<form asp-controller="Vehiculos" asp-action="Create" method="post">
+
+    <div class="form-group">
+        <label asp-for="Placa" class="label-control"></label>
+        <input type="text" asp-for="Placa" class="form-control" />
+        <span asp-validation-for="Placa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IdMarca" class="label-control"></label>
+        <select asp-for="IdMarca" class="form-control" asp-items="ViewBag.Marcas">
+            <option >Seleccione una  opcion valida...</option>
+        </select>
+        <span asp-validation-for="IdMarca" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Modelo" class="label-control"></label>
+        <input type="text" asp-for="Modelo" class="form-control" />
+        <span asp-validation-for="Modelo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Color" class="label-control"></label>
+        <input type="text" asp-for="Color" class="form-control" />
+        <span asp-validation-for="Color" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IdCliente" class="label-control"></label>
+       <select asp-for="IdCliente" class="form-control" asp-items="ViewBag.Clientes">
+           <option>Seleccione una opcion valida...</option>
+       </select>
+        <span asp-validation-for="IdCliente" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <a asp-controller="Vehiculos" asp-action="Index" class="btn btn-secondary">Regresar</a>
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+    </div>
+
+
+
+</form>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Grupo422021.Web1.Models.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,7 +22,7 @@ namespace Grupo422021.Web1.Models
         public string Modelo { get; set; }
 
         [Required]
-        public int Color { get; set; }
+        public EnumColores Color { get; set; }
 
         [Required]
         public  int  IdCliente { get; set; }

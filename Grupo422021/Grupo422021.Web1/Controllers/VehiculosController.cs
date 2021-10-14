@@ -43,6 +43,64 @@ namespace Grupo422021.Web1.Controllers
             return View(Vehiculo);
         }
 
+        [HttpPost]
+        public IActionResult Create(Vehiculo vehiculo)
+        {
+            if (ModelState.IsValid)
+            {
+                _contexto.Guardar(vehiculo);
+                return RedirectToAction("Index");
+            }
+
+            var marcas = _contextoMarca.Listar();
+            var clientes = _contextoCliente.Listar();
+
+            ViewBag.Marcas = new SelectList(marcas.ToList(), "IdMarca", "Nombre");
+            ViewBag.Clientes = new SelectList(clientes.ToList(), "IdCliente", "Nombre");
+
+
+            return View(vehiculo);
+        }
+
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var vehiculo = _contexto.Buscar(id);
+
+            var marcas = _contextoMarca.Listar();
+            var clientes = _contextoCliente.Listar();
+
+            ViewBag.Marcas = new SelectList(marcas.ToList(), "IdMarca", "Nombre");
+            ViewBag.Clientes = new SelectList(clientes.ToList(), "IdCliente", "Nombre");
+            return View(vehiculo);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id,Vehiculo vehiculo)
+        {
+            if (ModelState.IsValid)
+            {
+                _contexto.Modificar(id, vehiculo);
+             return   RedirectToAction("index");
+            }
+            var marcas = _contextoMarca.Listar();
+            var clientes = _contextoCliente.Listar();
+
+            ViewBag.Marcas = new SelectList(marcas.ToList(), "IdMarca", "Nombre");
+            ViewBag.Clientes = new SelectList(clientes.ToList(), "IdCliente", "Nombre");
+            return View(vehiculo);
+
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            _contexto.Borrar(id);
+            return RedirectToAction("Index");
+
+        }
+
 
 
     }

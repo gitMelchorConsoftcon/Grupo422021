@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Grupo422021.Web1.Models
@@ -22,5 +23,7 @@ namespace Grupo422021.Web1.Models
         [Display(Name ="Estatus")]
         [UIHint("Activo")]
         public bool Activo { get; set; }
+
+        public virtual List<OrdenServicioDetalle> OrdenServicioDetalle { get; set; }
     }
 }

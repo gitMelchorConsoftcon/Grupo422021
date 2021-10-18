@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Grupo422021.Web1.Models
 {
@@ -40,6 +38,7 @@ namespace Grupo422021.Web1.Models
         [ForeignKey("IdVehiculo")]
         public virtual Vehiculo Vehiculo { get; set; }
 
+        public virtual List<OrdenServicioDetalle> OrdenServicioDetalle { get; set; }
     }
 }
 

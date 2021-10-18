@@ -26,7 +26,25 @@ namespace Grupo422021.Web1.Controllers
         public IActionResult Index()
         {
             var lista = _contexto.Listar();
-            return View(lista);
+            var marca = _contextoMarca.Listar();
+            var cliente = _contextoCliente.Listar();
+
+            var resultado = (from v in lista.ToList()
+                             join m in marca.ToList() on v.IdMarca equals m.IdMarca
+                             join c in cliente.ToList() on v.IdCliente equals c.IdCliente
+                             select new Vehiculo
+                             {
+                                 IdVehiculo = v.IdVehiculo,
+                                 Placa = v.Placa,
+                                 IdMarca = v.IdMarca,
+                                 Color = v.Color,
+                                 IdCliente = v.IdCliente,
+                                 Activo = v.Activo,
+                                 Marca = m,
+                                 Cliente = c
+                             }).ToList();
+
+            return View(resultado);
         }
 
 

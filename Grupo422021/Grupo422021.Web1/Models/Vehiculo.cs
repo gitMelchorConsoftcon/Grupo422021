@@ -16,6 +16,7 @@ namespace Grupo422021.Web1.Models
         public string Placa { get; set; }
 
         [Required]
+        [Display(Name ="Marca")]
         public int IdMarca { get; set; }
 
         [MaxLength(30)]
@@ -25,6 +26,7 @@ namespace Grupo422021.Web1.Models
         public EnumColores Color { get; set; }
 
         [Required]
+        [Display(Name ="Cliente")]
         public  int  IdCliente { get; set; }
 
         [Required]

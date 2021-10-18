@@ -13,6 +13,7 @@
 <table class="table">
     <tr>
         <th>Palcas</th>
+        <th>Color</th>
         <th>Marca</th>
         <th>Cliente</th>
         <th></th>
@@ -21,8 +22,9 @@
     {
         <tr>
             <td>@item.Placa</td>
-            <td> @item.IdMarca</td>
-            <td> @item.IdCliente</td>
+            <td>@item.Color</td>
+            <td> @item.Marca.Nombre</td>
+            <td> @item.Cliente.Nombre</td>
 
             <td>
                 <a asp-controller="Vehiculos" asp-action="edit" asp-route-id="@item.IdMarca" class="btn btn-warning">

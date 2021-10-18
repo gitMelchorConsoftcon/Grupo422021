@@ -17,5 +17,8 @@ namespace Grupo422021.Web1.Data
         public DbSet<Vehiculo> Vehiculos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<OrdenServicio> OrdenServicio { get; set; }
+        public DbSet<OrdenServicioDetalle> OrdenServicioDetalle { get; set; }
+
+
     }
 }

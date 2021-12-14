@@ -1,4 +1,5 @@
-﻿using Grupo422021.Web1.Interfaces;
+﻿using Grupo422021.Web1.Data;
+using Grupo422021.Web1.Interfaces;
 using Grupo422021.Web1.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +9,11 @@ namespace Grupo422021.Web1.Controllers
     {
         private readonly IRepositorioGenerico<Marca> _contexto;
 
-        public MarcasController(IRepositorioGenerico<Marca> contexto)
+
+        private readonly DataContext _db;
+        public MarcasController(DataContext db, IRepositorioGenerico<Marca> contexto)
         {
+            _db = db;
             _contexto = contexto;
         }
 
@@ -40,12 +44,12 @@ namespace Grupo422021.Web1.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var Marca = _contexto.Buscar(id);
+            var marca = _db.Marcas.Find(id);
 
-            if (Marca == null)
+            if (marca == null)
                 return RedirectToAction("Index");
 
-            return View(Marca);
+            return View(marca);
         }
 
         [HttpPost]
@@ -53,7 +57,15 @@ namespace Grupo422021.Web1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _contexto.Modificar(id, obj);
+                var modificar = _db.Marcas.Find(id);
+                if (modificar == null)
+                    return RedirectToAction("index");
+                
+                modificar.Nombre = obj.Nombre;
+                modificar.Activo = obj.Activo;
+                _db.Marcas.Update(modificar);
+                _db.SaveChanges();
+                
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -63,7 +75,11 @@ namespace Grupo422021.Web1.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            _contexto.Borrar(id);
+          var borrar=  _db.Marcas.Find(id);
+            if (borrar == null)
+                return RedirectToAction("Index");
+            _db.Marcas.Remove(borrar);
+            _db.SaveChanges();
             return RedirectToAction("Index");
 
         }

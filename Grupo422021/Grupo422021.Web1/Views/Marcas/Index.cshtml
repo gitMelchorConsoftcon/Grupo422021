@@ -10,6 +10,14 @@
     </div>
 
 
+
+
+
+
+
+
+
+
 <table class="table">
     <tr>
         <th>Marca</th>
@@ -26,7 +34,8 @@
                 <a asp-controller="Marcas" asp-action="edit" asp-route-id="@item.IdMarca" class="btn btn-warning" >
                     Modificar
                 </a>
-                <a asp-controller="Marcas" asp-action="delete" asp-route-id="@item.IdMarca" class="btn btn-danger">
+                <a asp-controller="Marcas" asp-action="delete" 
+                asp-route-id="@item.IdMarca" class="btn btn-danger">
                     Borrar
                 </a>
             </td>

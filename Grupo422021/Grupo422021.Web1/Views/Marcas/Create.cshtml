@@ -6,10 +6,9 @@
 
 <form asp-controller="Marcas" asp-action="Create" method="post">
 
-    <div class="form-group">
-        <label asp-for="IdMarca" class="label-control"></label>
-        <input type="text" asp-for="IdMarca" class="form-control" />
-    </div>
+        
+        <input type="hidden" asp-for="IdMarca" class="form-control" />
+   
 
     <div class="form-group">
         <label asp-for="Nombre" class="label-control"></label>
@@ -18,7 +17,12 @@
     </div>
    
 
-
+       <div class="form-group">
+        <label asp-for="Activo" class="label-control"></label>
+        <input  asp-for="Activo" class="form-control" />
+        <span asp-validation-for="Activo" class="text-danger"></span>
+    </div>
+   
     <div class="form-group">
         <a asp-controller="Marcas" asp-action="Index" class="btn btn-secondary"  >Regresar</a>
         <input type="submit"  value="Guardar"  class="btn btn-primary" />
